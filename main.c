@@ -10,6 +10,8 @@
 #include "lista_risco.h"
 #include "relatorio.h"
 
+#include <locale.h> // Linha ajustar pra UTF-8
+
 #define VALOR_CORTE_RISCO 300.0   // Coloquei o valor de corte pra ser transaçãoi suspeita como > 200, mas pode mudar se precisar
 #define HORA_INICIO_RISCO "23:00:00"
 #define HORA_FIM_RISCO "05:00:00"
@@ -21,6 +23,8 @@ int horario_madrugada(const char *hora) {
 }
 
 int main() {
+    setlocale(LC_ALL, "Portuguese"); // Adicione esta linha
+
     // 1 - Converter CSV pra Binário
     int num_transacoes = csv_para_binario("CreditCardData.csv", "transacoes.dat");
     if (num_transacoes <= 0) {
